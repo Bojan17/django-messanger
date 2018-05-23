@@ -1,0 +1,6 @@
+<h4>New Post</h4>
+<form action="{% url 'posts:create' %}" method="POST" id="postForm">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Post">
+</form>
