@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
 from .models import Post
@@ -9,7 +10,7 @@ class IndexView(generic.ListView):
     template_name = "posts/index.html"
     context_object_name = "posts"
 
-class CreatePost(generic.CreateView):
+class CreatePost(LoginRequiredMixin, generic.CreateView):
         form_class = forms.PostForm
         model = Post
 
